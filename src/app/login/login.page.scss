@@ -18,10 +18,11 @@ ion-content{
 
     .heading{
         margin-top: 20px;
+        text-align: center;
         h1{
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: bolder;
-            color: black;
+            color: #375a13;
         }
         p{
             margin-top: 20px;
@@ -64,7 +65,7 @@ ion-content{
     .action-buttons{
         text-align: center;
         .login-button{
-            --background: aquamarine;
+            --background: #afc8b2;
             width: 100%;
             font-weight: bold;
         }
@@ -74,11 +75,18 @@ ion-content{
             color: #7b7b7b;
         }
         .signup-button{
-            --background-color: #b4b4b4;
-            --color: #000000;
+     
+            border: 2px solid #afc8b2;
+            background: transparent;
+            --color: #afc8b2;
             font-weight: bold;
             margin-top: 30px;
             width: 100%;
+            --border-color: #afc8b2; // Define el color del borde para Ionic
+            --background: transparent; // Asegúrate de que el fondo sea transparente para Ionic
+            --background-activated: transparent; // Asegúrate de que el fondo activado sea transparente para Ionic
+            --background-focused: transparent; // Asegúrate de que el fondo enfocado sea transparente para Ionic
+            --background-hover: transparent; // Asegúrate de que el fondo al pasar el ratón sea transparente para Ionic
         }
     }
 }

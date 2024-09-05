@@ -7,7 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: LoginPage
+  },  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'recuperacion',
+    loadChildren: () => import('./recuperacion/recuperacion.module').then( m => m.RecuperacionPageModule)
   }
+
 ];
 
 @NgModule({

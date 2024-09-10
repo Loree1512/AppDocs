@@ -1,7 +1,7 @@
-<ion-header >
-  <ion-toolbar >
+<ion-header>
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button >
+      <ion-button>
         <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -13,76 +13,95 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div class="slides ion-margin-bottom">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-content class="ion-text-left">
-          <ion-card-title class="ion-margin-bottom">Almacenamiento disponible</ion-card-title>
-          <ion-card-subtitle class="ion-text-right">7/10 GB</ion-card-subtitle>
-          <ion-progress-bar [value]="0.3"></ion-progress-bar>
-        </ion-card-content>
-      </ion-card-header>
-    </ion-card>
-</div>
-  <div class="searchbar-container">
-     <ion-searchbar placeholder="Buscar documentos..."></ion-searchbar>
+<ion-content>
+  <div class="main_content">
+  <!-- Avatar y Username -->
+  <div class="header-content">
+    <div class="perfil">
+      <ion-label class="msj1">¡Bienvenido!</ion-label>
+      <ion-label class="nombre">Admin</ion-label>
+    </div>
+    <div class="user_back" [style.backgroundImage]="'url(assets/avatar.jpg)'"></div>
   </div>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="4">
-        <ion-card button>
-          <ion-card-content class="ion-text-center">
-            <ion-icon name="document-outline" id="icon"></ion-icon>
-            <p>Mis Documentos</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="4">
-        <ion-card button>
-          <ion-card-content class="ion-text-center">
-            <ion-icon name="star-outline" id="icon"></ion-icon>
-            <p>Favoritos</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="4">
-        <ion-card button>
-          <ion-card-content class="ion-text-center">
-            <ion-icon name="time-outline" id="icon"></ion-icon>
-            <p>Recientes</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  
 
-  <h2>Documentos recientes</h2>
+  <div class="searchbar-container">
+    <ion-searchbar placeholder="Buscar documentos..."></ion-searchbar>
+ </div>
 
-  <ion-list>
-    <ion-item>
-      <ion-icon name="document-outline" slot="start" id="icon"></ion-icon>
-      <ion-label>
-        <h3>Informe Anual 2024.pdf</h3>
-        <p>28 Ago 2024</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="document-outline" slot="start" id="icon"></ion-icon>
-      <ion-label>
-        <h3>Presupuesto Q2.xlsx</h3>
-        <p>27 Ago 2024</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="document-outline" slot="start" id="icon"></ion-icon>
-      <ion-label>
-        <h3>Presentación Proyecto.pptx</h3>
-        <p>26 Ago 2024</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
 
+  <div class="content_div">
+    <div class="slides ion-margin-bottom">
+      <ion-card class="card-almacenamiento">
+        <ion-card-header>
+          <ion-card-content class="ion-text-left">
+            <ion-card-title class="ion-margin-bottom">Almacenamiento disponible</ion-card-title>
+            <ion-card-subtitle class="ion-text-right">7/10 GB</ion-card-subtitle>
+            <ion-progress-bar [value]="0.3"></ion-progress-bar>
+          </ion-card-content>
+        </ion-card-header>
+      </ion-card>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-card class="card-btn" button>
+            <ion-card-content class="ion-text-center">
+              <ion-icon name="document-outline" id="icon"></ion-icon>
+              <p>Mis Documentos</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="4">
+          <ion-card class="card-btn" button>
+            <ion-card-content class="ion-text-center">
+              <ion-icon name="star-outline" id="icon"></ion-icon>
+              <p>Favoritos</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="4">
+          <ion-card class="card-btn" button>
+            <ion-card-content class="ion-text-center">
+              <ion-icon name="time-outline" id="icon"></ion-icon>
+              <p>Recientes</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  <div class="container">
+    <h2>Documentos recientes</h2>
+  
+    <ion-list>
+      <ion-item>
+        <ion-icon name="document-outline" slot="start" id="icon"></ion-icon>
+        <ion-label>
+          <h3>Informe Anual 2024.pdf</h3>
+          <p>28 Ago 2024</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="document-outline" slot="start" id="icon"></ion-icon>
+        <ion-label>
+          <h3>Presupuesto Q2.xlsx</h3>
+          <p>27 Ago 2024</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="document-outline" slot="start" id="icon"></ion-icon>
+        <ion-label>
+          <h3>Presentación Proyecto.pptx</h3>
+          <p>26 Ago 2024</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  </div>
+</div>
+
+  
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
     <ion-fab-button class="fab-button-1">
       <ion-icon name="add"></ion-icon>
@@ -92,5 +111,5 @@
       <ion-icon name="camera" margin-top="100px"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  
+
 </ion-content>

@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'adddoc',
     loadChildren: () => import('./add-doc/add-doc.module').then( m => m.AddDocPageModule)
   },
+  {
+    path: 'index',
+    loadChildren: () => import('./index/index.module').then( m => m.IndexPageModule)
+  },
 ];
 
 @NgModule({

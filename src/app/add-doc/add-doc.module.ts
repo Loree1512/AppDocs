@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AddDocPageRoutingModule } from './add-doc-routing.module';
 
 import { AddDocPage } from './add-doc.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddDocPageRoutingModule
+    AddDocPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [AddDocPage]
 })

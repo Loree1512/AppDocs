@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-avatar class="large-avatar">
+        <img [src]="user.avatar" alt="Avatar de usuario">
+      </ion-avatar>
+      <ion-card-title>{{ user.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h2>Correo Electrónico</h2>
+            <p>{{ user.email }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h2>Ubicación</h2>
+            <p>{{ user.location }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h2>Fecha de Registro</h2>
+            <p>{{ user.joinDate }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="editProfile()">
+    <ion-icon name="create-outline" slot="start"></ion-icon>
+    Editar Perfil
+  </ion-button>
+</ion-content>

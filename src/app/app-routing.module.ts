@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'scandoc',
     loadChildren: () => import('./scan-doc/scan-doc.module').then( m => m.ScanDocPageModule)
   },
+  {
+    path: 'perfilusuario',
+    loadChildren: () => import('./perfil-usuario/perfil-usuario.module').then( m => m.PerfilUsuarioPageModule)
+  },
 ];
 
 @NgModule({

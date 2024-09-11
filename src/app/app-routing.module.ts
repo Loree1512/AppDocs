@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'index',
     loadChildren: () => import('./index/index.module').then( m => m.IndexPageModule)
   },
+  {
+    path: 'scandoc',
+    loadChildren: () => import('./scan-doc/scan-doc.module').then( m => m.ScanDocPageModule)
+  },
 ];
 
 @NgModule({

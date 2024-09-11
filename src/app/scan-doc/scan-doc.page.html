@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Escanear Documento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Escanear Nuevo Documento</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" (click)="takePicture()">
+        <ion-icon slot="start" name="camera"></ion-icon>
+        Capturar Imagen
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="capturedImage">
+    <ion-card-header>
+      <ion-card-title>Vista Previa</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="capturedImage" alt="Documento escaneado">
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="capturedImage">
+    <ion-card-header>
+      <ion-card-title>Detalles del Documento</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre del documento</ion-label>
+        <ion-input [(ngModel)]="documentName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Tipo de documento</ion-label>
+        <ion-select [(ngModel)]="documentType">
+          <ion-select-option value="dni">DNI</ion-select-option>
+          <ion-select-option value="pasaporte">Pasaporte</ion-select-option>
+          <ion-select-option value="factura">Factura</ion-select-option>
+          <ion-select-option value="otro">Otro</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" (click)="saveDocument()" [disabled]="!documentName || !documentType">
+        <ion-icon slot="start" name="save"></ion-icon>
+        Guardar Documento
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

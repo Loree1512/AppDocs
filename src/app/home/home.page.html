@@ -119,11 +119,11 @@
 
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
-    <ion-fab-button class="fab-button-1" routerLink="/adddoc">
+    <ion-fab-button class="fab-button-1" routerLink="/adddoc" (click)="animateButton($event.target!)">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
 
-    <ion-fab-button class="fab-button-2" routerLink="/scandoc">
+    <ion-fab-button class="fab-button-2" routerLink="/scandoc" (click)="animateButton($event.target!)">
       <ion-icon name="camera" margin-top="100px"></ion-icon>
     </ion-fab-button>
   </ion-fab>

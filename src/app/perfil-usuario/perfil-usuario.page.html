@@ -13,7 +13,7 @@
       <ion-avatar class="large-avatar">
         <img [src]="'assets/avatar.jpg'" alt="Avatar de usuario">
       </ion-avatar>
-      <ion-card-title>{{ user.name }}</ion-card-title>
+      <ion-card-title>{{ username }}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
@@ -22,7 +22,7 @@
           <ion-icon name="mail-outline" slot="start"></ion-icon>
           <ion-label>
             <h2>Correo Electrónico</h2>
-            <p>{{ user.email }}</p>
+            <p>{{ usermail }}</p>
           </ion-label>
         </ion-item>
 
@@ -30,7 +30,7 @@
           <ion-icon name="location-outline" slot="start"></ion-icon>
           <ion-label>
             <h2>Ubicación</h2>
-            <p>{{ user.location }}</p>
+            <p>Viña del Mar, Chile</p>
           </ion-label>
         </ion-item>
 
@@ -38,7 +38,7 @@
           <ion-icon name="calendar-outline" slot="start"></ion-icon>
           <ion-label>
             <h2>Fecha de Registro</h2>
-            <p>{{ user.joinDate }}</p>
+            <p>{{ userdate }}</p>
           </ion-label>
         </ion-item>
       </ion-list>

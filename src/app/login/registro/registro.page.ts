@@ -12,11 +12,20 @@ export class RegistroPage implements OnInit {
   user ={
     nombre: "",
     correo: "",
-    password: ""
+    password: "",
+    fechaRegistro:""
   }
   constructor(private alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
+    this.user.fechaRegistro = this.obtenerFechaActual()
+  }
+
+
+  obtenerFechaActual(): string {
+    // Devuelve la fecha actual en el formato deseado (por ejemplo, YYYY-MM-DD)
+    const ahora = new Date();
+    return ahora.toISOString().split('T')[0]; // Formato YYYY-MM-DD
   }
 
   async mostrarAlerta(mensaje: string) {

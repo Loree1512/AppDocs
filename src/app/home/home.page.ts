@@ -20,9 +20,9 @@ export class HomePage implements OnInit{
       .addElement(card)
       .duration(400)
       .keyframes([
-        { offset: 0, transform: 'scale(1)' },
-        { offset: 0.5, transform: 'scale(2)' },
-        { offset: 1, transform: 'scale(1)' }
+        { offset: 0, transform: 'scale(1)', backgroundColor: 'white'  },
+        { offset: 0.5, transform: 'scale(1.2)', backgroundColor: 'lightgreen'   },
+        { offset: 1, transform: 'scale(1)' ,backgroundColor: 'white' }
       ]);
   
     await animation.play();

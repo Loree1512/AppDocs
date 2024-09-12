@@ -6,3 +6,11 @@ ion-toolbar {
 ion-button{
     --background:#709775;
   }
+
+  .custom-file-button {
+    --background: white; /* Fondo blanco */
+    --border-color: #709775; /* Borde verde */
+    --color: #709775; /* Texto verde */
+    --ion-color-primary: #709775; /* Asegura que los iconos también sean verdes */
+    border: 1px solid #709775; /* Borde verde */
+  }

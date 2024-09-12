@@ -95,3 +95,10 @@ ion-content{
     }
 }
 
+.forgot-password-link {
+    color: #007bff; /* Color del enlace */
+    text-decoration: underline; /* Subrayado para parecer un enlace */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    display: block; /* Asegura que el enlace ocupe toda la línea */
+    margin-top: 10px; /* Espacio superior para separación */
+  }

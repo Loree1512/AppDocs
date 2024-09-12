@@ -16,6 +16,13 @@ export class LoginPage {
 
 constructor(public mensaje:ToastController, private route:Router, private alertController: AlertController) {}
 
+async editPassword() {
+  const alert = await this.alertController.create({
+    header: 'Editar Constraseña',
+    message: 'Esta funcionalidad aún no está implementada.',
+    buttons: ['OK']
+  });
+}
 
 async mensajeError(mensaje: string) {
   const alert = await this.alertController.create({

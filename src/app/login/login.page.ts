@@ -7,41 +7,60 @@ import { AlertController, ToastController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
 
-  nombre: string =""
-  correo: string =""
-  password: string =""
+export class LoginPage {
+  loginData = {
+    nombre: '',
+    password: ''
+  };
 
-  constructor(public mensaje:ToastController, private route:Router, public alerta:AlertController ) { }
+constructor(public mensaje:ToastController, private route:Router, private alertController: AlertController) {}
 
-  async mensajeExito(){
-    const toast = await this.mensaje.create({
-      message: 'Inicio de sesión exitoso',
-      duration: 2000
-    });
-    toast.present();
-  }
 
-  async mensajeError(){
-    const alert = await this.alerta.create({
-      header: 'Error',
-      subHeader: 'Error en el inicio de sesión',
-      message: 'Usuario o contraseña incorrectos',
-      buttons: ['Aceptar']
-    });
-  }
+async mensajeError(mensaje: string) {
+  const alert = await this.alertController.create({
+    header: 'Error',
+    message: mensaje,
+    buttons: ['OK']
+  });
 
-  ingresar(){
-    if(this.correo == "admin" && this.password == "admin"){
-      this.mensajeExito();
-      this.route.navigate(['/home']);
-    }else{
-      this.mensajeError();
+  await alert.present();
+}
+
+async mensajeExito(nombre: string){
+  const toast = await this.mensaje.create({
+    message: `Inicio de sesión exitoso, bienvenido ${nombre}`,
+    duration: 2000
+  });
+  toast.present();
+}
+
+  ingresar() {
+
+    if (!this.loginData.nombre || !this.loginData.password) {
+      this.mensajeError('No puede dejar campos vacíos');
+      return;
+    }
+
+    const savedUser = localStorage.getItem('user');
+
+    if (savedUser) {
+      const user = JSON.parse(savedUser);
+
+      // Verifica si el usuario y la contraseña coinciden
+      if (user.nombre === this.loginData.nombre && user.password === this.loginData.password) {
+        console.log('Login exitoso');
+        this.mensajeExito(user.nombre)
+        this.route.navigate(['./home']);  // Redirige al home si el login es exitoso
+      } else {
+        console.log('Credenciales incorrectas');
+        this.mensajeError('Nombre de usuario o contraseña incorrectos');
+      }
+    } else {
+      console.log('No se encontró el usuario');
+      this.mensajeError('No hay un usuario registrado.');
     }
   }
 
-  ngOnInit() {
-  }
 
 }

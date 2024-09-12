@@ -1,10 +1,14 @@
 ion-content{
     --background: linear-gradient(180deg,rgba(0,0,0,0.7),rgba(0,0,0,0.1)),
     url('/assets/background-login.png') no-repeat center center / cover;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .login-section{
-    height: 74vh;
+    height: 80dvh;
     width: 100%;
     max-width: 500px;
     background: #fff;

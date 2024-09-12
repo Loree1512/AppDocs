@@ -10,14 +10,14 @@
         <div class="form-input">
           <ion-icon name="mail-outline"></ion-icon>
           <ion-item>
-            <ion-input type="mail" [(ngModel)]="correo" name="correo" placeholder="Escribe tu correo"></ion-input>
+            <ion-input type="text" [(ngModel)]="loginData.nombre" name="nombre" placeholder="Escribe tu usuario"></ion-input>
           </ion-item>
         </div>
     
         <div class="form-input">
           <ion-icon name="lock-closed-outline"></ion-icon>
           <ion-item>
-            <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Escribe tu contraseña"></ion-input>
+            <ion-input type="password" [(ngModel)]="loginData.password" name="password" placeholder="Escribe tu contraseña"></ion-input>
           </ion-item>
         </div>
       </div>

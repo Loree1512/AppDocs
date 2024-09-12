@@ -9,61 +9,59 @@
 <ion-menu side="start" menuId="first" contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menú</ion-title>
+      <div class="header-content">
+        <div class="user_back" [style.backgroundImage]="'url(assets/avatar.jpg)'"></div>
+        <div class="perfil">
+          <ion-label class="nombre">{{ username }}</ion-label>
+        </div>
+      </div>
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-list>
-      <ion-item button>
-        <ion-icon slot="start" name="home"></ion-icon>
-        <ion-label>Inicio</ion-label>
-      </ion-item>
-      <ion-item button routerLink="/perfilusuario">
-        <ion-icon slot="start" name="person" ></ion-icon>
-        <ion-label>Perfil</ion-label>
-      </ion-item>
-      <ion-item button>
-        <ion-icon slot="start" name="settings"></ion-icon>
-        <ion-label>Configuración</ion-label>
-      </ion-item>
-      <ion-item button (click)="logout()">
-        <ion-icon slot="start" name="log-out"></ion-icon>
-        <ion-label>Cerrar Sesión</ion-label>
-      </ion-item>
-    </ion-list>
+    <div class="menu-content">
+      <ion-list>
+        <ion-item button>
+          <ion-icon slot="start" name="home"></ion-icon>
+          <ion-label>Inicio</ion-label>
+        </ion-item>
+        <ion-item button routerLink="/perfilusuario">
+          <ion-icon slot="start" name="person"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </ion-item>
+        <ion-item button>
+          <ion-icon slot="start" name="settings"></ion-icon>
+          <ion-label>Configuración</ion-label>
+        </ion-item>
+        <ion-item button (click)="logout()">
+          <ion-icon slot="start" name="log-out"></ion-icon>
+          <ion-label>Cerrar Sesión</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
   </ion-content>
 </ion-menu>
 
 
 <ion-content id="main-content">
   <div class="main_content">
-  <!-- Avatar y Username -->
-  <div class="header-content">
-    <div class="perfil">
-      <ion-label class="msj1">¡Bienvenido!</ion-label>
-      <ion-label class="nombre">Admin</ion-label>
-    </div>
-    <div class="user_back" [style.backgroundImage]="'url(assets/avatar.jpg)'"></div>
-  </div>
-  
+ 
+      <div class="slides ion-margin-bottom">
+        <ion-card class="card-almacenamiento">
+          <ion-card-header>
+            <ion-card-content class="ion-text-left full-card-content">
+              <ion-card-title class="ion-margin-bottom">Almacenamiento disponible</ion-card-title>
+              <ion-card-subtitle class="ion-text-right">7/10 GB</ion-card-subtitle>
+              <ion-progress-bar [value]="0.3"></ion-progress-bar>
+            </ion-card-content>
+          </ion-card-header>
+        </ion-card>
+      </div>
 
   <div class="searchbar-container">
     <ion-searchbar placeholder="Buscar documentos..."></ion-searchbar>
  </div>
 
-
-  <div class="content_div">
-    <div class="slides ion-margin-bottom">
-      <ion-card class="card-almacenamiento">
-        <ion-card-header>
-          <ion-card-content class="ion-text-left full-card-content">
-            <ion-card-title class="ion-margin-bottom">Almacenamiento disponible</ion-card-title>
-            <ion-card-subtitle class="ion-text-right">7/10 GB</ion-card-subtitle>
-            <ion-progress-bar [value]="0.3"></ion-progress-bar>
-          </ion-card-content>
-        </ion-card-header>
-      </ion-card>
-    </div>
+ <div class="content_div">
     <ion-grid>
       <ion-row>
         <ion-col size="4">

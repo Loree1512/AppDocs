@@ -12,12 +12,12 @@ export class HomePage implements OnInit{
   
   constructor(private router: Router, private animationCtrl: AnimationController) {}
 
-  async animateButton(target: EventTarget | null) {
+  async animateCard(target: EventTarget | null) {
     if (!(target instanceof HTMLElement)) return;
   
-    const button = target as HTMLElement;
+    const card = target as HTMLElement;
     const animation = this.animationCtrl.create()
-      .addElement(button)
+      .addElement(card)
       .duration(400)
       .keyframes([
         { offset: 0, transform: 'scale(1)' },

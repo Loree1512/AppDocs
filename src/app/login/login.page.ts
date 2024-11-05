@@ -8,6 +8,12 @@ import { User } from '../models/user.model';
 //librerías de cámara
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
+interface UserData {
+  nombre: string;
+  correo: string;
+  uid: string;
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -49,22 +55,43 @@ export class LoginPage implements OnInit {
   }
 
   async ingresar() {
-    if (this.correo === "" && this.password === "") {
+    if (this.correo === "" || this.password === "") {
       console.log("No pueden estar los campos vacíos");
       this.mensajeError();
-    } else {
-      try {
-        const auth = getAuth();
-        const userCredential = await signInWithEmailAndPassword(auth, this.correo, this.password);
-        const user = userCredential.user;
-        await this.storage.set("correo", this.correo);
-        await this.storage.set("SessionID", true);
-        console.log("Inicio exitoso");
-        this.mensajeExito(user.email || 'Usuario');
-        this.router.navigate(["/home"]);
-      } catch (error) {
-        this.mensajeError();
-      }
+      return;
     }
-  }
+
+    try {
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(auth, this.correo, this.password);
+      const user = userCredential.user;
+      
+      if (!user) {
+        throw new Error('No se pudo obtener el usuario');
+      }
+
+      await this.storage.set("correo", this.correo);
+      await this.storage.set("SessionID", true);
+      
+      try {
+        const userData = await this.loginFirebase.getUserData(user.uid) as UserData;
+    if (userData?.nombre) {
+      this.nombre = userData.nombre;
+      await this.storage.set("nombre", this.nombre);
+      this.mensajeExito(this.nombre);
+    } else {
+      this.mensajeExito('Usuario');
+    }
+      } catch (firestoreError) {
+        console.error('Error al obtener datos del usuario:', firestoreError);
+        this.mensajeExito('Usuario');
+      }
+
+      console.log("Inicio exitoso");
+      this.router.navigate(["/home"]);
+    } catch (error) {
+      console.error('Error de autenticación:', error);
+      this.mensajeError();
+    }
+}
 }

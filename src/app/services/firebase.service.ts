@@ -29,7 +29,6 @@ export class FirebaseLoginService {
     const user = userCredential.user;
 
     if (user) {
-      // Llamamos a updateUserData para almacenar la información del usuario en Firestore
       await this.updateUserData(user.uid, correo, nombre);
     }
 
@@ -44,10 +43,10 @@ export class FirebaseLoginService {
       uid: uid,
       correo: correo,
       nombre: nombre,
-      lastLogin: new Date() // Puedes añadir cualquier campo adicional que necesites
+      lastLogin: new Date() 
     };
 
-    await userRef.set(data, { merge: true }); // `merge: true` evita sobrescribir datos existentes
+    await userRef.set(data, { merge: true });
   }
 
   // Función para obtener los datos del usuario

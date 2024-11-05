@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -9,27 +10,21 @@ import { Router } from '@angular/router';
 })
 export class PerfilUsuarioPage implements OnInit {
  
-  constructor(private alertController: AlertController, private router: Router) { }
+  constructor(private alertController: AlertController, private router: Router, private storage: Storage) { }
 
   username: string = '';
   usermail: string = '';
   userdate: string = '';
 
-  ngOnInit() {
-  this.getUser();
-  }
-
-  getUser() {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      const user = JSON.parse(savedUser);
-      this.username = user.nombre;  // Asigna el nombre del usuario a la variable
-      this.usermail = user.correo;
-      this.userdate = user.fechaRegistro
-    } else {
-      this.router.navigate(['/login']);  // Redirigir si no hay usuario guardado
+  async ngOnInit() {
+    await this.storage.create(); 
+    const isLoggedIn = await this.storage.get("SessionID");
+    if (!isLoggedIn) {
+      this.router.navigate(['/login']);
     }
   }
+
+
   async editProfile() {
     const alert = await this.alertController.create({
       header: 'Editar Perfil',

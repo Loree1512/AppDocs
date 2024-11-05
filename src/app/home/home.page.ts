@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { AnimationController } from '@ionic/angular';
 export class HomePage implements OnInit{
   username: string = '';
   
-  constructor(private router: Router, private animationCtrl: AnimationController) {}
+  constructor(private router: Router, private animationCtrl: AnimationController, private storage: Storage) {}
 
   async animateCard(target: EventTarget | null) {
     if (!(target instanceof HTMLElement)) return;
@@ -28,17 +29,10 @@ export class HomePage implements OnInit{
     await animation.play();
   }
 
-  ngOnInit() {
-    this.getUser();
-  }
-
-  getUser() {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      const user = JSON.parse(savedUser);
-      this.username = user.nombre;  // Asigna el nombre del usuario a la variable
-    } else {
-      this.router.navigate(['/login']);  // Redirigir si no hay usuario guardado
+  async ngOnInit() {
+    const isLoggedIn = await this.storage.get("SessionID");
+    if (!isLoggedIn) {
+      this.router.navigate(['/login']);
     }
   }
 

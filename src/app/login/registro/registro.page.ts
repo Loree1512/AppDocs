@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { FirebaseLoginService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-registro',
@@ -8,24 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
+    nombre: string="";
+    correo: string="";
+    password: string="";
 
-  user ={
-    nombre: "",
-    correo: "",
-    password: "",
-    fechaRegistro:""
-  }
-  constructor(private alertController: AlertController, private router: Router) { }
+  constructor(private alertController: AlertController, private router: Router, private access:FirebaseLoginService) { }
 
   ngOnInit() {
-    this.user.fechaRegistro = this.obtenerFechaActual()
   }
+  async crear_usuario(){
+    await this.access.create_user(this.correo,this.password,this.nombre)
 
-
-  obtenerFechaActual(): string {
-    // Devuelve la fecha actual en el formato deseado (por ejemplo, YYYY-MM-DD)
-    const ahora = new Date();
-    return ahora.toISOString().split('T')[0]; // Formato YYYY-MM-DD
   }
 
   async mostrarAlerta(mensaje: string) {
@@ -38,41 +32,9 @@ export class RegistroPage implements OnInit {
     await alert.present();
   }
 
-  guardarUsuario() {
-    // Validaciones
-    const nombreValido = /^[a-zA-Z][a-zA-Z0-9]{3,}$/.test(this.user.nombre);
-    const passwordValido = this.user.password.length >= 5;
-    const correoValido = /^[^\s@]+@[^\s@]+\.(com|cl)$/.test(this.user.correo);
 
-    if (!nombreValido) {
-      this.mostrarAlerta('El nombre debe tener al menos 4 caracteres, no contener caracteres especiales y no comenzar con un número.');
-      return;
-    }
 
-    if (!passwordValido) {
-      this.mostrarAlerta('La contraseña debe tener al menos 5 caracteres.');
-      return;
-    }
 
-    if (!correoValido) {
-      this.mostrarAlerta('El correo debe contener un "@" y terminar con ".com" o ".cl".');
-      return;
-    }
 
-    // Guardar usuario
-    localStorage.setItem('user', JSON.stringify(this.user));
-    console.log('Usuario guardado:', this.user);
-
-    this.router.navigate(['/login']);
-  }
-
-  getUser() {
-    // Obtener usuario
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      this.user = JSON.parse(savedUser);
-      console.log('Usuario recuperado:', this.user);
-    }
-  }
 
 }
